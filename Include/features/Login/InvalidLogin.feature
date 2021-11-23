@@ -2,9 +2,8 @@
 Feature: Login
 
   @Invalid_login
-  Scenario Outline: User able to login with valid credential
-    Given User Open App
-    And User Navigate to Login Page
+  Scenario Outline: User unable to login with invalid credential
+    Given User Navigate to Login Page
     When User input <phone> and <PIN>
     And User click login button
     Then Verification Invalid Login Appear
@@ -12,6 +11,8 @@ Feature: Login
     Examples: 
       | phone 				| PIN    	|
       | 123 					| 12345 	|
+      | 085879214397	| 123			|
       | empty					| empty		|
       | empty					| 123456	|
+      | 085879214397	| empty 	|
 		

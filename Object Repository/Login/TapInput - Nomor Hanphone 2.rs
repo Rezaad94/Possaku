@@ -3,7 +3,7 @@
    <description></description>
    <name>TapInput - Nomor Hanphone 2</name>
    <tag></tag>
-   <elementGuidId>00000000-0000-0000-0000-000000000000</elementGuidId>
+   <elementGuidId>8da7afb7-689f-40d3-b2ec-6f81b9837a6f</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <webElementProperties>
@@ -160,6 +160,6 @@
       <type>Main</type>
       <value>//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText[1]</value>
    </webElementProperties>
-   <locator>//*[@class = 'android.widget.EditText' and (@text = 'Nomor Handphone' or . = 'Nomor Handphone') and @resource-id = '']</locator>
-   <locatorStrategy>ATTRIBUTES</locatorStrategy>
+   <locator>//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText[1]</locator>
+   <locatorStrategy>XPATH</locatorStrategy>
 </MobileElementEntity>

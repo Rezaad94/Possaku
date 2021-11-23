@@ -1,3 +1,4 @@
+package com.steps.login
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -43,19 +44,9 @@ import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
 
 
-
 class LoginSteps {
 
-	@Given ("User Open App")
-	def openApp() {
-		println ("\n Openapp Steps")
-
-		def appPath = PathUtil.relativeToAbsolutePath(GlobalVariable.G_androidApp, RunConfiguration.getProjectDir())
-		
-		Mobile.startApplication(appPath, true)
-	}
-
-	@And("User Navigate to Login Page")
+	@Given("User Navigate to Login Page")
 	def navigateToLoginPage() {
 		println ("\n navigeteToLoginPage Steps")
 
@@ -71,31 +62,30 @@ class LoginSteps {
 	@When("User input (.*) and (.*)")
 	def enterCredential(phone, PIN) {
 		println ("\n enterCredential Steps")
-		
+
 		if (phone == "empty" && PIN == "empty") {
-						
+
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
-			
+
 			Mobile.tap(findTestObject('Login/TapInputPIN'), GlobalVariable.G_Timeout)
 			
 		} else if(phone != "empty" && PIN == "empty") {
-			
+
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
-			
+
 			Mobile.setText(findTestObject('Login/SetText - Nomor Handphone'), phone, GlobalVariable.G_Timeout)
-			
+
 			Mobile.tap(findTestObject('Login/TapInputPIN'), GlobalVariable.G_Timeout)
 			
-			
 		} else if(phone == "empty" && PIN != "empty") {
-			
+
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
 
 			Mobile.tap(findTestObject('Login/TapInputPIN'), GlobalVariable.G_Timeout)
 
 			Mobile.setText(findTestObject('Login/SetTextPIN'), PIN, GlobalVariable.G_Timeout)
-		} 
-		
+		}
+
 		else {
 
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
@@ -119,40 +109,54 @@ class LoginSteps {
 	def navigateToHomePage () {
 		println ("\n navigateToHomePage Steps")
 
-		Mobile.verifyElementExist(findTestObject('Login/SearchProduk'), GlobalVariable.G_Timeout)
+		Mobile.verifyElementExist(findTestObject('Login/NavBar'), GlobalVariable.G_Timeout)
 	}
-	
+
 	@Then ("Verification Invalid Login Appear")
 	def verificationFailed () {
 		println ("\n Verification Appear")
-		
-		if (Mobile.verifyElementExist(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)) {
-			
-			def phone = Mobile.getAttribute(findTestObject('Login/TapInput - Nomor Hanphone 2'), 'text', GlobalVariable.G_Timeout)
+
+		if (Mobile.verifyElementVisible(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)) {
+
+			def phone = Mobile.getAttribute(findTestObject('Login/TapInput - Nomor Hanphone 2'), 'text', GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)
+
 			def PIN = Mobile.getAttribute(findTestObject('Login/TapInputPIN'), 'text', GlobalVariable.G_Timeout)
-		
+
 			println (phone)
 			println (PIN)
-			
+
 			if (phone == "Nomor Handphone" && PIN == "") {
 				println ("\n in verif 1")
+
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input phone number'), GlobalVariable.G_Timeout)
-				
+
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input pin number'), GlobalVariable.G_Timeout)
 			
 			} else if(phone == "Nomor Handphone" && PIN != "") {
 				println ("\n in verif 2")
+
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input phone number'), GlobalVariable.G_Timeout)
-			 
-			} else(phone != "Nomor Handphone" && PIN == "") {
+			
+			} else {
 				println ("\n in verif 3")
-				
+			}
+		} else {
+
+			if (Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - No tlp tidak terdaftar'), GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)) {
+				println ("\n in verif 4")
+
+				Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - No tlp tidak terdaftar'), GlobalVariable.G_Timeout)
+			
+			} else if (Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - PIN salah'), GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)) {
+				println ("\n in verif 5")
+
+				Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - PIN salah'), GlobalVariable.G_Timeout)
+			
+			} else {
+				println ("\n in verif 6")
+
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input pin number'), GlobalVariable.G_Timeout)
 			}
-			
-		} else {
-			 println ("\n in verif 4")
-			 Mobile.verifyElementExist(findTestObject('Login/Pop Up mesaage - login Failed'), GlobalVariable.G_Timeout)
 		}
 	}
 }
