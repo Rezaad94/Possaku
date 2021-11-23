@@ -1,0 +1,14 @@
+{
+  "keywordFileContentHash": "BFA9A2BF168D337219AF1AE790645F6D",
+  "keywordClasses": [
+    {
+      "name": "registration.NewTestListener",
+      "keywordMethods": []
+    },
+    {
+      "name": "registration.RegistrationSteps",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": true
+}

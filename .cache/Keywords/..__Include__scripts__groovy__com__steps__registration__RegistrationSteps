@@ -1,0 +1,10 @@
+{
+  "keywordFileContentHash": "389EEF9BB19A73F3B180E61E808FAB92",
+  "keywordClasses": [
+    {
+      "name": "com.steps.registration.RegistrationSteps",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": false
+}

@@ -1,0 +1,10 @@
+{
+  "keywordFileContentHash": "F494BDBD9A5F127E664419C05199D4D9",
+  "keywordClasses": [
+    {
+      "name": "com.steps.registration.CucumberRunner",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": false
+}
