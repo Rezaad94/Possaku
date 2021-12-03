@@ -68,7 +68,6 @@ class LoginSteps {
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
 
 			Mobile.tap(findTestObject('Login/TapInputPIN'), GlobalVariable.G_Timeout)
-			
 		} else if(phone != "empty" && PIN == "empty") {
 
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
@@ -76,7 +75,6 @@ class LoginSteps {
 			Mobile.setText(findTestObject('Login/SetText - Nomor Handphone'), phone, GlobalVariable.G_Timeout)
 
 			Mobile.tap(findTestObject('Login/TapInputPIN'), GlobalVariable.G_Timeout)
-			
 		} else if(phone == "empty" && PIN != "empty") {
 
 			Mobile.tap(findTestObject('Login/TapInput - Nomor Hanphone 2'), GlobalVariable.G_Timeout)
@@ -131,12 +129,10 @@ class LoginSteps {
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input phone number'), GlobalVariable.G_Timeout)
 
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input pin number'), GlobalVariable.G_Timeout)
-			
 			} else if(phone == "Nomor Handphone" && PIN != "") {
 				println ("\n in verif 2")
 
 				Mobile.verifyElementExist(findTestObject('Login/warning message - input phone number'), GlobalVariable.G_Timeout)
-			
 			} else {
 				println ("\n in verif 3")
 			}
@@ -146,12 +142,10 @@ class LoginSteps {
 				println ("\n in verif 4")
 
 				Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - No tlp tidak terdaftar'), GlobalVariable.G_Timeout)
-			
 			} else if (Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - PIN salah'), GlobalVariable.G_Timeout, FailureHandling.OPTIONAL)) {
 				println ("\n in verif 5")
 
 				Mobile.verifyElementExist(findTestObject('Object Repository/Login/Pop Up message - PIN salah'), GlobalVariable.G_Timeout)
-			
 			} else {
 				println ("\n in verif 6")
 

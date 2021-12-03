@@ -23,6 +23,7 @@ import internal.GlobalVariable
 
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.WebDriver
+import org.junit.After
 import org.openqa.selenium.By
 
 import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
@@ -67,11 +68,19 @@ class Kasir {
 		Mobile.tapAndHold(findTestObject('Kasir/KasirMenuButton'), GlobalVariable.G_Timeout, GlobalVariable.G_Timeout)
 	}
 
-	@And("User select item from katalog")
-	def selectItem () {
+	@And("User Navigate to Catalog")
+	def NavigateToCatalog () {
 		Mobile.tap(findTestObject('Kasir/KatalogButton'), GlobalVariable.G_Timeout)
+		
+	}
 
-		Mobile.tapAndHold(findTestObject('Kasir/PencilItem'), GlobalVariable.G_Timeout, GlobalVariable.G_Timeout)
+	@And ("User select item in sembako")
+	def selectItem () {
+		Mobile.tapAndHold(findTestObject('Kasir/sembako - daganganku'), GlobalVariable.G_Timeout, GlobalVariable.G_Timeout)
+		
+	}
+	@And ("user add item to cart")
+	def addToCart () {
 
 		Mobile.tapAndHold(findTestObject('Kasir/TambahkanButton'), GlobalVariable.G_Timeout, GlobalVariable.G_Timeout)
 
@@ -111,8 +120,34 @@ class Kasir {
 		Mobile.tap(findTestObject('Kasir/Konfirmasi Ya Pembayaran Button'), GlobalVariable.G_Timeout)
 	}
 
+
 	@Then ("User Navigate to success page")
 	def navigateToSuccess () {
 		Mobile.verifyElementExist(findTestObject('Kasir/Transaksi berhasil'), GlobalVariable.G_Timeout)
+	}
+
+	
+	@And ("User back to homepage by click kembali ke beranda button")
+	def navigateToHomePage() {
+		Mobile.tap(findTestObject('Kasir/Kembali ke beranda button'), GlobalVariable.G_Timeout)
+	}
+	
+	@When ("user search availabe product with (.*)")
+	def searchByKeyword (keyword) {
+		Mobile.tap(findTestObject('Kasir/search bar - Cari produk'), GlobalVariable.G_Timeout)
+		
+		Mobile.setText(findTestObject('Kasir/search bar - Cari produk'), keyword+'\\n', GlobalVariable.G_Timeout)
+		
+	}
+	
+	@Then ("user find that product")
+	def verifyProduct () {
+		Mobile.verifyElementExist(findTestObject('Kasir/Pensil 2B item'), GlobalVariable.G_Timeout)
+	}
+	
+	@And ("user select item from search result")
+	def selectSearchItem () {
+		Mobile.tapAndHold(findTestObject('Kasir/Pensil 2B item'), GlobalVariable.G_Timeout, GlobalVariable.G_Timeout)
+		
 	}
 }

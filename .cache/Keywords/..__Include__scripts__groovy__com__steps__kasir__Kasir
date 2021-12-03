@@ -1,10 +1,10 @@
 {
-  "keywordFileContentHash": "B604D395F07501CFE727996BA61154EE",
+  "keywordFileContentHash": "1E8E51070F6AAC65C2B7D83D031AA799",
   "keywordClasses": [
     {
       "name": "com.steps.kasir.Kasir",
       "keywordMethods": []
     }
   ],
-  "javadocParsed": true
+  "javadocParsed": false
 }
